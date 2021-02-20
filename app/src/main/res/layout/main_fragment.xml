@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.jbc7ag.notifications.ui.main.MainViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.MainFragment">
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_title"
+        android:text="@string/main_title"
+        android:textColor="@color/rainbow_purple"
+        android:textSize="@dimen/main_title_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_simpleText"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_marginTop="50dp"
+        android:drawableLeft="@drawable/ic_baseline_format_color_text_24"
+        android:text="@string/simple_text"
+        android:drawableTint="@color/white"
+        android:backgroundTint="@color/rainbow_blue"
+        app:layout_constraintEnd_toStartOf="@+id/btn_bigText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/message"
+        android:onClick="@{()-> viewModel.showTexNotification(viewModel.TEXT)}"
+        />
+
+    <Button
+        android:id="@+id/btn_bigText"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:drawableLeft="@drawable/ic_baseline_format_align_justify_24"
+        android:text="@string/big_text"
+        android:drawableTint="@color/white"
+        android:backgroundTint="@color/rainbow_green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_simpleText"
+        app:layout_constraintTop_toTopOf="@+id/btn_simpleText"
+        android:onClick="@{()-> viewModel.showTexNotification(viewModel.BIGTEXT)}"
+        />
+
+    <Button
+        android:id="@+id/btn_bigPicture"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:drawableLeft="@drawable/ic_baseline_image_24"
+        android:layout_marginTop="50dp"
+        android:drawableTint="@color/white"
+        android:backgroundTint="@color/rainbow_yellow"
+        android:text="@string/big_picture"
+        app:layout_constraintEnd_toStartOf="@+id/btn_inbox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_simpleText"
+        android:onClick="@{()-> viewModel.showTexNotification(viewModel.BIGPICTURE)}"
+        />
+
+    <Button
+        android:id="@+id/btn_inbox"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:drawableLeft="@drawable/ic_baseline_chat_24"
+        android:text="@string/inbox"
+        android:drawableTint="@color/white"
+        android:backgroundTint="@color/rainbow_orange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_bigPicture"
+        app:layout_constraintTop_toTopOf="@+id/btn_bigPicture"
+        android:onClick="@{()-> viewModel.showTexNotification(viewModel.INBOX)}"
+        />
+
+    <Button
+        android:id="@+id/btn_messaging"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:text="@string/messaging"
+        android:layout_marginTop="50dp"
+        android:drawableTint="@color/white"
+        android:backgroundTint="@color/rainbow_red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_bigPicture"
+        android:onClick="@{()-> viewModel.showTexNotification(viewModel.MESSAGING)}"
+        />
+
+    <ImageView
+        android:layout_width="390dp"
+        android:layout_height="161dp"
+        android:contentDescription="@string/rainbow_image"
+        android:scaleType="fitCenter"
+        android:src="@drawable/rainbow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

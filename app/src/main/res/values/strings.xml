@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">notifications</string>
+    <string name="main_title">Notifications</string>
+    <string name="messaging">Messaging</string>
+    <string name="inbox">Inbox</string>
+    <string name="big_picture">Big Picture</string>
+    <string name="big_text">Big Text</string>
+    <string name="simple_text">Simple Text</string>
+    <string name="rainbow_image">rainbow image</string>
+
+    <!-- description -->
+    <string name="simple_text_description"> Basic Notification with only text</string>
+    <string name="big_text_description"> Big text Notification with only text</string>
+    <string name="big_picture_description"> Notification with a expandible picture</string>
+    <string name="inbox_description"> Inbox notification with a list </string>
+    <string name="messaging_description"> Messaging notification list </string>
+    <string name="big_string"> A big big big big big big big big big big big big big big big big big big big big big big big big big big big big big big big big big big big big big big big big big big big big big big big big</string>
+</resources>
