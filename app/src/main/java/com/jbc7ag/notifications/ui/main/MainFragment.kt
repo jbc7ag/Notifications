@@ -1,8 +1,6 @@
 package com.jbc7ag.notifications.ui.main
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
+import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -50,22 +48,22 @@ class MainFragment : Fragment() {
 
         viewModel.showBigTextNotification.observe(viewLifecycleOwner, Observer { show ->
             if(show)
-            notificationManager.sendBigTextNotification(context?.getText(R.string.simple_text_description).toString(), context!!)
+            notificationManager.sendBigTextNotification(context?.getText(R.string.big_text_description).toString(), context!!)
         })
 
         viewModel.showBigPictureNotification.observe(viewLifecycleOwner, Observer { show ->
             if(show)
-                notificationManager.sendBigTextNotification(context?.getText(R.string.simple_text_description).toString(), context!!)
+                notificationManager.sendBigPictureNotification(context?.getText(R.string.big_picture_description).toString(), context!!)
         })
 
         viewModel.showMessagingNotification.observe(viewLifecycleOwner, Observer { show ->
             if(show)
-                notificationManager.sendBigTextNotification(context?.getText(R.string.simple_text_description).toString(), context!!)
+                notificationManager.sendMessagingNotification(context?.getText(R.string.messaging_description).toString(), context!!)
         })
 
         viewModel.showInboxNotification.observe(viewLifecycleOwner, Observer { show ->
             if(show)
-                notificationManager.sendBigTextNotification(context?.getText(R.string.simple_text_description).toString(), context!!)
+                notificationManager.sendInboxtNotification(context?.getText(R.string.inbox_description).toString(), context!!)
         })
 
 
@@ -131,10 +129,105 @@ class MainFragment : Fragment() {
                         CHANNELID)
                  .setStyle(bigTextStyle)
                 .setSmallIcon(R.drawable.rainbow)
-                .setContentTitle(applicationContext.getString(R.string.simple_text))
+                .setContentTitle(applicationContext.getString(R.string.big_text))
                 .setContentText(messageBody)
                 .setContentIntent(contentPendingIntent)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
+        notify(NOTIFICATIONID, builder.build())
+    }
+
+    // BIG PICTURE NOTIFICATION
+    private fun NotificationManager.sendBigPictureNotification(messageBody: String, applicationContext: Context) {
+
+        cancelAll()
+        val contentIntent = Intent(applicationContext, MainActivity::class.java)
+        val contentPendingIntent  = PendingIntent.getActivity(applicationContext, NOTIFICATIONID, contentIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+        // create the bitmap
+        val rainbowImage = BitmapFactory.decodeResource(
+            applicationContext.resources,
+            R.drawable.rainbow
+        )
+
+        val bigPicStyle = NotificationCompat.BigPictureStyle()
+            .bigPicture(rainbowImage)
+            .bigLargeIcon(null)
+
+        // Build the notification
+        val builder = NotificationCompat
+            .Builder(applicationContext,
+                CHANNELID)
+            .setStyle(bigPicStyle)
+            .setSmallIcon(R.drawable.rainbow)
+            .setContentTitle(applicationContext.getString(R.string.big_picture))
+            .setContentText(messageBody)
+            .setContentIntent(contentPendingIntent)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+        notify(NOTIFICATIONID, builder.build())
+    }
+
+    // INBOX NOTIFICATION
+    private fun NotificationManager.sendInboxtNotification(messageBody: String, applicationContext: Context) {
+
+        cancelAll()
+        val contentIntent = Intent(applicationContext, MainActivity::class.java)
+        val contentPendingIntent  = PendingIntent.getActivity(applicationContext, NOTIFICATIONID, contentIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+        val inboxStyle = NotificationCompat.InboxStyle()
+            .addLine("Thanks for subscribe")
+            .addLine("Here the news for today")
+            .addLine("We need you to pay ... ")
+            .setBigContentTitle("You got 20 Emails")
+            .setSummaryText("You got 17 more emails")
+
+        // create the bitmap
+        val rainbowImage = BitmapFactory.decodeResource(
+            applicationContext.resources,
+            R.drawable.rainbow
+        )
+
+
+        // Build the notification
+        val builder = NotificationCompat
+            .Builder(applicationContext,
+                CHANNELID)
+            .setStyle(inboxStyle)
+            .setSmallIcon(R.drawable.rainbow)
+            .setLargeIcon(rainbowImage)
+            .setContentTitle(applicationContext.getString(R.string.inbox))
+            .setContentText(messageBody)
+            .setContentIntent(contentPendingIntent)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+        notify(NOTIFICATIONID, builder.build())
+    }
+
+    // MESSAGING NOTIFICATION
+    private fun NotificationManager.sendMessagingNotification(messageBody: String, applicationContext: Context) {
+
+        cancelAll()
+        val contentIntent = Intent(applicationContext, MainActivity::class.java)
+        val contentPendingIntent  = PendingIntent.getActivity(applicationContext, NOTIFICATIONID, contentIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+        val messagingStyle = NotificationCompat.MessagingStyle("Jessica")
+            .setConversationTitle(applicationContext.getString(R.string.messaging))
+            .addMessage("Hi! I'm hungry!",System.currentTimeMillis()-60000,"Cat")
+            .addMessage("Where are you?",System.currentTimeMillis()-60000,"Cat")
+            .addMessage("Lets go play",System.currentTimeMillis()-30000,"Dog")
+            .addMessage("Miss you",System.currentTimeMillis(),"Dog")
+            .setGroupConversation(true)
+
+
+
+        // Build the notification
+        val builder = NotificationCompat
+            .Builder(applicationContext,
+                CHANNELID)
+            .setStyle(messagingStyle)
+            .setSmallIcon(R.drawable.rainbow)
+            .setContentTitle(applicationContext.getString(R.string.messaging))
+            .setContentText(messageBody)
+            .setContentIntent(contentPendingIntent)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
         notify(NOTIFICATIONID, builder.build())
     }
 
