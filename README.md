@@ -15,7 +15,7 @@ Push the buttons then a notification will show up
 
  - Big Text Notification
 
-<img src="Screenshots/bigtext.png" alt="drawing" width="200"/>
+<img src="Screenshots/BigText.png" alt="drawing" width="200"/>
 
  - Big Picture Notification
 
