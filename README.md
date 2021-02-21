@@ -7,8 +7,29 @@ Push the buttons then a notification will show up
 
 ## Screenshots
 
-![Screenshot1](Screenshots/app.png)
-![Screenshot3](Screenshots/simpleText.png)
+<img src="Screenshots/app.png" alt="drawing" width="200"/>
+
+- Simple or Basic Notification
+
+<img src="Screenshots/simpleText.png" alt="drawing" width="200"/>
+
+ - Big Text Notification
+
+<img src="Screenshots/bigtext.png" alt="drawing" width="200"/>
+
+ - Big Picture Notification
+
+<img src="Screenshots/bigpicture.png" alt="drawing" width="200"/>
+
+- Inbox Notification
+
+<img src="Screenshots/inbox.png" alt="drawing" width="200"/>
+
+- Messaging Notification
+
+<img src="Screenshots/messaging.png" alt="drawing" width="200"/>
+
+
 
 ## Credits
 
